@@ -1,4 +1,4 @@
-function [BW] = find_the_pine(RGB)
+function BW = find_the_pine3(RGB)
 %createMask  Threshold RGB image using auto-generated code from colorThresholder app.
 %  [BW,MASKEDRGBIMAGE] = createMask(RGB) thresholds image RGB using
 %  auto-generated code from the colorThresholder app. The colorspace and
@@ -60,9 +60,9 @@ I = I - shiftVec;
 I = [I ones(size(I,1),1)]';
 
 % Apply transformation matrix
-tMat = [-0.007363 -0.000965 0.000000 0.555542;
-    -0.000015 0.000141 0.007934 -0.507544;
-    0.000875 -0.008114 0.000138 9.088941;
+tMat = [0.007401 0.000511 0.000000 -0.530262;
+    -0.000372 0.006548 0.004731 -0.673655;
+    -0.000276 0.004863 -0.006371 8.782774;
     0.000000 0.000000 0.000000 1.000000];
 
 J = (tMat*I)';
@@ -71,15 +71,13 @@ end
 function polyBW = applyPolygons(J,polyBW)
 
 % Define each manually generated ROI
-hPoints(1).data = [0.414443 -0.440920;
-    0.371283 -0.698910;
-    0.354683 -0.874683;
-    0.497442 -1.017145;
-    0.300457 -1.017145;
-    0.038180 -0.976745;
-    0.000000 -0.567080;
-    0.397843 -0.201358;
-    0.426616 -0.314760];
+hPoints(1).data = [-0.377627 -0.504530;
+    -0.357557 -1.104521;
+    -0.499101 -1.164922;
+    -0.361782 -1.394449;
+    -0.138903 -1.388409;
+    -0.021654 -1.122641;
+    -0.018485 -0.681709];
 
 % Iteratively apply each ROI
 for ii = 1:length(hPoints)
