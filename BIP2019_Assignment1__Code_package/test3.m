@@ -1,6 +1,6 @@
 test = load('input/test.mat');
 
-IMG = imread('input/28.jpg');
+IMG = imread('input/3.jpg');
 
 MASK = test.test1_mask;
 center = [test.test2_center_x, test.test2_center_y];
@@ -19,7 +19,9 @@ end
 
 
 % test: is the visual output correct?
-crop = apply_mask_and_crop(IMG, MASK, [test.test2_center_x, test.test2_center_y]);
+MASK = create_mask(IMG);
+[center_x,center_y] = find_center(MASK);
+crop = apply_mask_and_crop(IMG, MASK, [center_x,center_y] );
 figure(3);
 subplot(121); imshow(crop); title('Your output');
 subplot(122); imshow(test.test3_crop); title('Required output');
