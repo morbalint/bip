@@ -4,7 +4,7 @@ J = mat2gray(J);
 
 % Threshold values -- you can play with them
 canny_th       =  0.17;
-non_max_sup__k =  5;
+non_max_sup__k =  10;
 non_max_sup__p = 10;
 
 
